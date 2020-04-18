@@ -1,12 +1,10 @@
 {
-  "bugs": {
-    "url": "https://github.com/boinged/website/issues"
-  },
   "dependencies": {
     "express": "4.17.1",
     "helmet": "3.22.0",
     "source-map-support": "0.5.16"
   },
+  "description": "api server",
   "devDependencies": {
     "@types/express": "4.17.6",
     "@types/helmet": "0.0.45",
@@ -18,11 +16,10 @@
     "tslint": "6.1.1",
     "typescript": "3.8.3"
   },
-  "homepage": "https://github.com/boinged/website#readme",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/boinged/website.git"
+    "url": "git+https://github.com/boinged/api-app.git"
   },
   "scripts": {
     "build": "rimraf dist && tsc",

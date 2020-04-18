@@ -6,8 +6,6 @@ let app = express();
 
 app.use(helmet());
 
-app.use(express.static('public'));
-
 let routeGenerator = new RouteGenerator();
 app.use('/', routeGenerator.router);
 
