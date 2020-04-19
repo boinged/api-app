@@ -8,7 +8,7 @@ server.register(helmet);
 server.register(routes);
 
 const start = async () => {
-	await server.listen(Config.port);
+	await server.listen(Config.port, '::');
 }
 
 start();
