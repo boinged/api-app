@@ -1,4 +1,6 @@
-import express from 'express';
+import fastify from 'fastify';
+import http from 'http';
+
 export interface IEndpoint {
-	execute(request: express.Request, response: express.Response): void;
+	execute(request: fastify.FastifyRequest, reply: fastify.FastifyReply<http.ServerResponse>): Promise<void>;
 }

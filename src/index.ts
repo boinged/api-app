@@ -1,15 +1,14 @@
-import express from 'express';
-import helmet from 'helmet';
-import { RouteGenerator } from './routeGenerator';
+import fastify from 'fastify';
+import helmet from 'fastify-helmet';
+import { routes } from './routes/routes';
+import { Config } from './config/config';
 
-let app = express();
+let server = fastify({logger: true});
+server.register(helmet);
+server.register(routes);
 
-app.use(helmet());
+const start = async () => {
+	await server.listen(Config.port);
+}
 
-let routeGenerator = new RouteGenerator();
-app.use('/', routeGenerator.router);
-
-let port = 8080;
-app.listen(port, () => {
-	console.info('Server', process.pid, 'listening on port', port);
-});
+start();
