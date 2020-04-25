@@ -14,7 +14,7 @@ describe('health', () => {
 
 	describe('execute', () => {
 		it('replies with a health result', async () => {
-			const result = await endpoint.execute(request);
+			let result = await endpoint.execute(request);
 			expect(result).toBeInstanceOf(HealthResult);
 			expect(result.health).toEqual('OK');
 		});

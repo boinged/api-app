@@ -2,6 +2,8 @@
   "dependencies": {
     "fastify": "2.13.1",
     "fastify-helmet": "3.0.2",
+    "fastify-plugin": "1.6.1",
+    "mongodb": "3.5.6",
     "source-map-support": "0.5.19"
   },
   "description": "api server",
@@ -9,6 +11,7 @@
     "@types/express": "4.17.6",
     "@types/helmet": "0.0.45",
     "@types/jasmine": "3.5.10",
+    "@types/mongodb": "^3.5.11",
     "@types/node": "12.12.35",
     "@types/supertest": "2.0.8",
     "@typescript-eslint/eslint-plugin": "2.29.0",
@@ -16,6 +19,7 @@
     "eslint": "6.8.0",
     "eslint-plugin-import": "2.20.2",
     "jasmine": "3.5.0",
+    "mongodb-memory-server": "6.5.2",
     "nyc": "15.0.1",
     "rimraf": "3.0.2",
     "typescript": "3.8.3"
