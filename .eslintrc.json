@@ -1,0 +1,38 @@
+{
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:import/errors",
+		"plugin:import/typescript",
+		"plugin:import/warnings"
+	],
+	"parser": "@typescript-eslint/parser",
+	"plugins": [
+		"@typescript-eslint"
+	],
+	"root": true,
+	"rules": {
+		"@typescript-eslint/interface-name-prefix": "off",
+		"@typescript-eslint/no-explicit-any": "error",
+		"eol-last": "error",
+		"import/order": ["error", {
+			"newlines-between": "always"
+		}],
+		"indent": ["error", "tab"],
+		"lines-between-class-members": "error",
+		"prefer-const": "off",
+		"quotes": ["error", "single"],
+		"semi": "error",
+		"space-before-blocks": "error"
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [
+					".ts"
+				]
+			}
+		}
+	}
+}

@@ -1,5 +1,4 @@
 import fastify from 'fastify';
-import http from 'http';
 
 import { HealthResult } from '../model/healthResult';
 

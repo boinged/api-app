@@ -1,5 +1,4 @@
 import fastify from 'fastify';
-import http from 'http';
 
 import { Result } from '../model/result';
 

@@ -11,10 +11,13 @@
     "@types/jasmine": "3.5.10",
     "@types/node": "12.12.35",
     "@types/supertest": "2.0.8",
+    "@typescript-eslint/eslint-plugin": "2.29.0",
+    "@typescript-eslint/parser": "2.29.0",
+    "eslint": "6.8.0",
+    "eslint-plugin-import": "2.20.2",
     "jasmine": "3.5.0",
     "nyc": "15.0.1",
     "rimraf": "3.0.2",
-    "tslint": "6.1.1",
     "typescript": "3.8.3"
   },
   "license": "ISC",
@@ -24,8 +27,8 @@
   },
   "scripts": {
     "build": "rimraf dist && tsc",
-	"cover": "nyc jasmine --config=jasmine.json",
-    "lint": "tslint --fix src/**/*.ts spec/**/*.ts",
+    "cover": "nyc jasmine --config=jasmine.json",
+    "lint": "eslint --fix --ext .ts src spec",
     "start": "node -r source-map-support/register dist/src/index.js",
     "test": "npm run build && jasmine --config=jasmine.json"
   },

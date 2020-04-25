@@ -1,5 +1,4 @@
 import fastify from 'fastify';
-import http from 'http';
 
 import { Health } from '../../src/endpoint/health';
 import { HealthResult } from '../../src/model/healthResult';
@@ -15,7 +14,7 @@ describe('health', () => {
 
 	describe('execute', () => {
 		it('replies with a health result', async () => {
-			let result = await endpoint.execute(request);
+			const result = await endpoint.execute(request);
 			expect(result).toBeInstanceOf(HealthResult);
 			expect(result.health).toEqual('OK');
 		});

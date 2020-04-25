@@ -1,5 +1,4 @@
 import fastify from 'fastify';
-import http from 'http';
 
 import { Message } from '../../src/endpoint/message';
 import { MessageResult } from '../../src/model/messageResult';
@@ -15,7 +14,7 @@ describe('message', () => {
 
 	describe('execute', () => {
 		it('replies with a message result', async () => {
-			let result = await endpoint.execute(request);
+			const result = await endpoint.execute(request);
 			expect(result).toBeInstanceOf(MessageResult);
 			expect(result.message).toBeDefined();
 		});
