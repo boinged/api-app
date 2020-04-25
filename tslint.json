@@ -4,6 +4,7 @@
         "tslint:recommended"
     ],
     "rules": {
+		"eofline": true,
         "indent": [true, "tabs", 2],
         "ordered-imports": [true, {
             "grouped-imports": true

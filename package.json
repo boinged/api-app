@@ -2,7 +2,7 @@
   "dependencies": {
     "fastify": "2.13.1",
     "fastify-helmet": "3.0.2",
-    "source-map-support": "0.5.16"
+    "source-map-support": "0.5.19"
   },
   "description": "api server",
   "devDependencies": {
@@ -12,6 +12,7 @@
     "@types/node": "12.12.35",
     "@types/supertest": "2.0.8",
     "jasmine": "3.5.0",
+    "nyc": "15.0.1",
     "rimraf": "3.0.2",
     "tslint": "6.1.1",
     "typescript": "3.8.3"
@@ -23,7 +24,8 @@
   },
   "scripts": {
     "build": "rimraf dist && tsc",
-    "lint": "tslint --fix src/**/*.ts",
+	"cover": "nyc jasmine --config=jasmine.json",
+    "lint": "tslint --fix src/**/*.ts spec/**/*.ts",
     "start": "node -r source-map-support/register dist/src/index.js",
     "test": "npm run build && jasmine --config=jasmine.json"
   },

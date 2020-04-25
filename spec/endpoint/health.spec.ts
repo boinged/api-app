@@ -1,22 +1,23 @@
-import { Health } from '../../src/endpoint/health';
 import fastify from 'fastify';
 import http from 'http';
+
+import { Health } from '../../src/endpoint/health';
+import { HealthResult } from '../../src/model/healthResult';
 
 describe('health', () => {
 	let endpoint: Health;
 	let request: fastify.FastifyRequest;
-	let response: fastify.FastifyReply<http.ServerResponse>;
 
 	beforeEach(() => {
 		endpoint = new Health();
 		request = {} as fastify.FastifyRequest;
-		response = jasmine.createSpyObj('response', ['send']);
 	});
 
 	describe('execute', () => {
-		it('responds successfully', () => {
-			endpoint.execute(request, response);
-			expect(response.send).toHaveBeenCalledWith('OK');
+		it('replies with a health result', async () => {
+			let result = await endpoint.execute(request);
+			expect(result).toBeInstanceOf(HealthResult);
+			expect(result.health).toEqual('OK');
 		});
 	});
 });

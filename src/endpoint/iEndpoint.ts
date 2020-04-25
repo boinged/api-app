@@ -1,6 +1,8 @@
 import fastify from 'fastify';
 import http from 'http';
 
+import { Result } from '../model/result';
+
 export interface IEndpoint {
-	execute(request: fastify.FastifyRequest, reply: fastify.FastifyReply<http.ServerResponse>): Promise<void>;
+	execute(request: fastify.FastifyRequest): Promise<Result>;
 }
