@@ -1,5 +1,7 @@
 import { MongoClient , Db } from 'mongodb';
 
+import { Logger} from '../util/logger';
+
 export class Connector {
 	client: MongoClient;
 
@@ -8,7 +10,9 @@ export class Connector {
 	}
 
 	async connect(): Promise<Db> {
-		let db = await this.client.connect();
-		return db.db();
+		await this.client.connect();
+		let db = this.client.db();
+		Logger.info(`Connected to db ${db.databaseName}`);
+		return db;
 	}
 }
