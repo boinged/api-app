@@ -11,7 +11,7 @@ export class Router {
 		this.db = db;
 	}
 
-	async generateRoutes(server: FastifyInstance): Promise<void> {
+	async applyRoutes(server: FastifyInstance): Promise<void> {
 		const health = new Health();
 		server.get('/healthz', health.execute.bind(health));
 

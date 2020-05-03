@@ -18,8 +18,7 @@ const start = async (): Promise<void> => {
 	let db = await connector.connect();
 
 	let router = new Router(db);
-
-	server.register(router.generateRoutes.bind(router));
+	server.register(router.applyRoutes.bind(router));
 
 	await server.listen(Config.port, '::');
 };
