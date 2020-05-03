@@ -1,4 +1,4 @@
-import fastify from 'fastify';
+import { FastifyRequest } from 'fastify';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
 import { Message } from '../../src/endpoint/message';
@@ -7,7 +7,7 @@ import { Connector } from '../../src/database/connector';
 
 describe('message', () => {
 	let endpoint: Message;
-	let request: fastify.FastifyRequest;
+	let request: FastifyRequest;
 
 	beforeAll(async () => {
 		let mongod = new MongoMemoryServer();
@@ -19,7 +19,7 @@ describe('message', () => {
 	});
 
 	beforeEach(() => {
-		request = {} as fastify.FastifyRequest;
+		request = {} as FastifyRequest;
 	});
 
 	describe('execute', () => {

@@ -1,15 +1,15 @@
-import fastify from 'fastify';
+import { FastifyRequest } from 'fastify';
 
 import { Health } from '../../src/endpoint/health';
 import { HealthResult } from '../../src/model/healthResult';
 
 describe('health', () => {
 	let endpoint: Health;
-	let request: fastify.FastifyRequest;
+	let request: FastifyRequest;
 
 	beforeEach(() => {
 		endpoint = new Health();
-		request = {} as fastify.FastifyRequest;
+		request = {} as FastifyRequest;
 	});
 
 	describe('execute', () => {
