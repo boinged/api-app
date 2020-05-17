@@ -1,7 +1,7 @@
-import { FastifyRequest } from 'fastify';
+import {FastifyRequest} from 'fastify';
 
-import { Health } from '../../src/endpoint/health';
-import { HealthResult } from '../../src/model/healthResult';
+import {Health} from '../../src/endpoint/health';
+import {HealthResult} from '../../src/model/healthResult';
 
 describe('health', () => {
 	let endpoint: Health;

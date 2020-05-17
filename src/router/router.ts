@@ -1,8 +1,8 @@
-import { FastifyInstance } from 'fastify';
-import { Db } from 'mongodb';
+import {FastifyInstance} from 'fastify';
+import {Db} from 'mongodb';
 
-import { Health } from '../endpoint/health';
-import { Message } from '../endpoint/message';
+import {Health} from '../endpoint/health';
+import {Message} from '../endpoint/message';
 
 export class Router {
 	db: Db;

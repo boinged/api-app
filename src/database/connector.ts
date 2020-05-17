@@ -1,12 +1,12 @@
-import { MongoClient , Db } from 'mongodb';
+import {MongoClient, Db} from 'mongodb';
 
-import { Logger} from '../util/logger';
+import {Logger} from '../util/logger';
 
 export class Connector {
 	client: MongoClient;
 
 	constructor(uri: string) {
-		this.client = new MongoClient(uri, { useUnifiedTopology: true });
+		this.client = new MongoClient(uri, {useUnifiedTopology: true});
 	}
 
 	async connect(): Promise<Db> {

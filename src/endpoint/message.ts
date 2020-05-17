@@ -1,9 +1,9 @@
-import { FastifyRequest } from 'fastify';
-import { Db } from 'mongodb';
+import {FastifyRequest} from 'fastify';
+import {Db} from 'mongodb';
 
-import { MessageResult } from '../model/messageResult';
+import {MessageResult} from '../model/messageResult';
 
-import { IEndpoint } from './iEndpoint';
+import {IEndpoint} from './iEndpoint';
 
 
 export class Message implements IEndpoint {

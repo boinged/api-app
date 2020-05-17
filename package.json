@@ -1,26 +1,31 @@
 {
   "dependencies": {
-    "fastify": "2.14.0",
+    "@grpc/grpc-js": "1.0.3",
+    "fastify": "2.14.1",
     "fastify-helmet": "3.0.2",
+    "google-protobuf": "3.12.0",
     "mongodb": "3.5.7",
     "pino": "6.2.1",
     "source-map-support": "0.5.19"
   },
   "description": "api server",
   "devDependencies": {
+    "@types/google-protobuf": "3.7.2",
     "@types/jasmine": "3.5.10",
-    "@types/mongodb": "3.5.14",
+    "@types/mongodb": "3.5.17",
     "@types/node": "12.12.35",
-    "@types/pino": "6.0.0",
-    "@typescript-eslint/eslint-plugin": "2.30.0",
-    "@typescript-eslint/parser": "2.30.0",
-    "eslint": "6.8.0",
+    "@types/pino": "6.0.1",
+    "@typescript-eslint/eslint-plugin": "2.33.0",
+    "@typescript-eslint/parser": "2.33.0",
+    "eslint": "7.0.0",
     "eslint-plugin-import": "2.20.2",
+    "grpc-tools": "1.8.1",
+    "grpc_tools_node_protoc_ts": "3.0.0",
     "jasmine": "3.5.0",
-    "mongodb-memory-server": "6.5.2",
+    "mongodb-memory-server-core": "6.6.0",
     "nyc": "15.0.1",
     "rimraf": "3.0.2",
-    "typescript": "3.8.3"
+    "typescript": "3.9.2"
   },
   "license": "ISC",
   "repository": {
@@ -31,6 +36,9 @@
     "build": "rimraf dist && tsc",
     "cover": "nyc jasmine --config=jasmine.json",
     "lint": "eslint --fix --ext .ts src spec",
+    "protoc": "npm run protoc-js && npm run protoc-ts",
+    "protoc-js": "grpc_tools_node_protoc --proto_path=proto --grpc_out=generate_package_definition:src/proto --js_out=import_style=commonjs,binary:src/proto content.proto",
+    "protoc-ts": "grpc_tools_node_protoc --proto_path=proto --ts_out=generate_package_definition:src/proto --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts content.proto",
     "start": "node -r source-map-support/register dist/src/index.js",
     "test": "npm run build && jasmine --config=jasmine.json"
   },

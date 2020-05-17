@@ -1,8 +1,8 @@
-import { FastifyRequest } from 'fastify';
+import {FastifyRequest} from 'fastify';
 
-import { HealthResult } from '../model/healthResult';
+import {HealthResult} from '../model/healthResult';
 
-import { IEndpoint } from './iEndpoint';
+import {IEndpoint} from './iEndpoint';
 
 
 export class Health implements IEndpoint {

@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+		"allowJs": true,
         "esModuleInterop": true,
         "module": "commonjs",
         "moduleResolution": "node",
@@ -10,6 +11,6 @@
     },
     "include": [
         "src/**/*",
-        "spec/**/*", "jasmine.json"
+        "spec/**/*", "jasmine.json", "types.d.ts"
     ]
 }

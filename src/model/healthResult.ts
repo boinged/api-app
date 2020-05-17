@@ -1,4 +1,4 @@
-import { Result } from './result';
+import {Result} from './result';
 
 export class HealthResult extends Result {
 	health: string;

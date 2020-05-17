@@ -1,6 +1,6 @@
-import { FastifyRequest } from 'fastify';
+import {FastifyRequest} from 'fastify';
 
-import { Result } from '../model/result';
+import {Result} from '../model/result';
 
 export interface IEndpoint {
 	execute(request: FastifyRequest): Promise<Result>;

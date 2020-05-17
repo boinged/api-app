@@ -1,9 +1,9 @@
-import { FastifyRequest } from 'fastify';
-import { MongoMemoryServer } from 'mongodb-memory-server';
+import {FastifyRequest} from 'fastify';
+import {MongoMemoryServer} from 'mongodb-memory-server-core';
 
-import { Message } from '../../src/endpoint/message';
-import { MessageResult } from '../../src/model/messageResult';
-import { Connector } from '../../src/database/connector';
+import {Message} from '../../src/endpoint/message';
+import {MessageResult} from '../../src/model/messageResult';
+import {Connector} from '../../src/database/connector';
 
 describe('message', () => {
 	let endpoint: Message;
