@@ -11,6 +11,7 @@ RUN npm install
 RUN npm run build
 RUN rm -r node_modules
 RUN npm install --production
+RUN rm -r node_modules/.bin
 
 FROM node:12.16-alpine
 RUN apk add --no-cache tini
