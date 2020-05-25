@@ -1,5 +1,7 @@
 FROM node:12.16-alpine
 
+RUN apk --no-cache add git
+
 WORKDIR /usr/src/app
 
 COPY package.json .
