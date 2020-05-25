@@ -1,7 +1,5 @@
-FROM node:12.16-alpine
-
+FROM node:12.16-alpine AS builder
 RUN apk --no-cache add git
-
 WORKDIR /usr/src/app
 
 COPY package.json .
@@ -11,15 +9,19 @@ COPY tsconfig.json .
 
 RUN npm install
 RUN npm run build
-RUN npm prune --production
 
+FROM node:12.16-alpine
+RUN apk add --no-cache tini
+WORKDIR /usr/src/app
+
+COPY package.json .
+COPY package-lock.json .
+COPY --from=builder /usr/src/app/dist dist
+
+RUN npm install --production
+RUN rm package.json
 RUN rm package-lock.json
-RUN rm -rf src
-RUN rm tsconfig.json
 
 EXPOSE 8080
-
-RUN apk add --no-cache tini
 ENTRYPOINT ["/sbin/tini", "--"]
-
 CMD ["node", "-r", "source-map-support/register", "dist/index.js"]
