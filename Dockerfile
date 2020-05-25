@@ -9,7 +9,8 @@ COPY tsconfig.json .
 
 RUN npm install
 RUN npm run build
-RUN npm prune --production
+RUN rm -r node_modules
+RUN npm install --production
 
 FROM node:12.16-alpine
 RUN apk add --no-cache tini
