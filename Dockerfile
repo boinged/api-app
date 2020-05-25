@@ -1,6 +1,6 @@
 FROM node:12.16-alpine AS builder
 RUN apk --no-cache add git
-WORKDIR /usr/src/app
+WORKDIR /usr/src/build
 
 COPY package.json .
 COPY package-lock.json .
@@ -9,18 +9,14 @@ COPY tsconfig.json .
 
 RUN npm install
 RUN npm run build
+RUN npm prune --production
 
 FROM node:12.16-alpine
 RUN apk add --no-cache tini
 WORKDIR /usr/src/app
 
-COPY package.json .
-COPY package-lock.json .
-COPY --from=builder /usr/src/app/dist dist
-
-RUN npm install --production
-RUN rm package.json
-RUN rm package-lock.json
+COPY --from=builder /usr/src/build/node_modules node_modules
+COPY --from=builder /usr/src/build/dist dist
 
 EXPOSE 8080
 ENTRYPOINT ["/sbin/tini", "--"]
