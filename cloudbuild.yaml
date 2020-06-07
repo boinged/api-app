@@ -2,7 +2,7 @@ steps:
 - name: node:12
   id: Install
   entrypoint: npm
-  args: ['install']
+  args: ['ci']
 - name: node:12
   id: Test
   entrypoint: npm
