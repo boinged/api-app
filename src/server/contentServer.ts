@@ -1,6 +1,6 @@
 import {ServerUnaryCall, sendUnaryData} from '@grpc/grpc-js';
-import {Db} from 'mongodb';
 import {ContentResponse, ContentRequest, IContentServer} from 'api-proto';
+import {Db} from 'mongodb';
 
 export class ContentServer implements IContentServer {
 	db: Db;
@@ -10,10 +10,10 @@ export class ContentServer implements IContentServer {
 	}
 
 	async getContent(call: ServerUnaryCall<ContentRequest, ContentResponse>, callback: sendUnaryData<ContentResponse>): Promise<void> {
-		let collection = this.db.collection('message');
-		let message = await collection.findOne({});
+		const collection = this.db.collection('message');
+		const message = await collection.findOne({});
 
-		let response = new ContentResponse();
+		const response = new ContentResponse();
 		response.setContent(message.message);
 		callback(null, response);
 	}

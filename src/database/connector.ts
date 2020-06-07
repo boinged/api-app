@@ -11,7 +11,7 @@ export class Connector {
 
 	async connect(): Promise<Db> {
 		await this.client.connect();
-		let db = this.client.db();
+		const db = this.client.db();
 		Logger.info(`Connected to db ${db.databaseName}`);
 		return db;
 	}

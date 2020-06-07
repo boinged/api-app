@@ -1,6 +1,6 @@
 import {Server, ServerCredentials} from '@grpc/grpc-js';
-import {Db} from 'mongodb';
 import {ContentService} from 'api-proto';
+import {Db} from 'mongodb';
 
 import {Logger} from '../util/logger';
 
@@ -11,7 +11,7 @@ export class GrpcServer {
 
 	constructor(db: Db) {
 		this.server = new Server();
-		let contentServer = new ContentServer(db);
+		const contentServer = new ContentServer(db);
 		// @ts-ignore
 		this.server.addService(ContentService, contentServer);
 	}

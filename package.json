@@ -1,30 +1,31 @@
 {
   "dependencies": {
-    "@grpc/grpc-js": "1.0.4",
+    "@grpc/grpc-js": "1.0.5",
     "api-proto": "git+https://github.com/boinged/api-proto.git#v1.0.0",
     "fastify": "2.14.1",
     "fastify-helmet": "3.0.2",
-    "google-protobuf": "3.12.1",
-    "mongodb": "3.5.7",
-    "pino": "6.2.1",
+    "google-auth-library": "6.0.1",
+    "google-protobuf": "3.12.2",
+    "mongodb": "3.5.8",
+    "pino": "6.3.2",
     "source-map-support": "0.5.19"
   },
   "description": "api server",
   "devDependencies": {
     "@types/google-protobuf": "3.7.2",
     "@types/jasmine": "3.5.10",
-    "@types/mongodb": "3.5.18",
+    "@types/mongodb": "3.5.20",
     "@types/node": "12.12.42",
     "@types/pino": "6.0.1",
-    "@typescript-eslint/eslint-plugin": "2.33.0",
-    "@typescript-eslint/parser": "2.33.0",
+    "@typescript-eslint/eslint-plugin": "2.34.0",
+    "@typescript-eslint/parser": "2.34.0",
     "eslint": "6.8.0",
     "eslint-plugin-import": "2.20.2",
     "jasmine": "3.5.0",
     "mongodb-memory-server": "6.6.1",
-    "nyc": "15.0.1",
+    "nyc": "15.1.0",
     "rimraf": "3.0.2",
-    "typescript": "3.9.3"
+    "typescript": "3.9.5"
   },
   "license": "ISC",
   "repository": {
