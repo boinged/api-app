@@ -9,7 +9,8 @@ COPY tsconfig.json .
 
 RUN npm ci
 RUN npm run build
-RUN npm ci --production
+RUN rm -r node_modules
+RUN npm i --production
 RUN rm -r node_modules/.bin
 
 FROM node:12.16-alpine
