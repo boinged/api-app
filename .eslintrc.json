@@ -1,7 +1,6 @@
 {
 	"extends": [
 		"eslint:recommended",
-		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:import/errors",
 		"plugin:import/typescript",
@@ -13,7 +12,6 @@
 	],
 	"root": true,
 	"rules": {
-		"@typescript-eslint/ban-ts-ignore": "warn",
 		"@typescript-eslint/interface-name-prefix": "off",
 		"@typescript-eslint/no-explicit-any": "error",
 		"comma-spacing": "error",

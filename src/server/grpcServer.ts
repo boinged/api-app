@@ -1,4 +1,4 @@
-import {Server, ServerCredentials} from '@grpc/grpc-js';
+import {Server, ServerCredentials, UntypedServiceImplementation} from '@grpc/grpc-js';
 import {ContentService} from 'api-proto';
 import {Db} from 'mongodb';
 
@@ -12,8 +12,7 @@ export class GrpcServer {
 	constructor(db: Db) {
 		this.server = new Server();
 		const contentServer = new ContentServer(db);
-		// @ts-ignore
-		this.server.addService(ContentService, contentServer);
+		this.server.addService(ContentService, contentServer as unknown as UntypedServiceImplementation);
 	}
 
 	async start(): Promise<void> {
