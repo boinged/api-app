@@ -1,5 +1,5 @@
-import * as fastify from 'fastify';
-import * as helmet from 'fastify-helmet';
+import fastify from 'fastify';
+import helmet from 'fastify-helmet';
 
 import {Config} from './config/config';
 import {Connector} from './database/connector';
