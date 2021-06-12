@@ -13,7 +13,7 @@ export class Router {
 
 	async applyRoutes(server: FastifyInstance): Promise<void> {
 		const health = new Health();
-		server.get('/healthz', health.execute.bind(health));
+		server.get('/healthy', health.execute.bind(health));
 
 		const message = new Message(this.db);
 		server.get('/content', message.execute.bind(message));
