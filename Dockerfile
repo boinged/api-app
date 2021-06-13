@@ -1,4 +1,4 @@
-FROM node:12.18-alpine AS builder
+FROM node:12.22-alpine AS builder
 RUN apk --no-cache add git
 WORKDIR /usr/src/build
 
@@ -13,7 +13,7 @@ RUN rm -r node_modules
 RUN npm ci --production
 RUN rm -r node_modules/.bin
 
-FROM node:12.18-alpine
+FROM node:12.22-alpine
 RUN apk add --no-cache tini
 WORKDIR /usr/src/app
 
