@@ -10,8 +10,8 @@ describe('message', () => {
 	let request: FastifyRequest;
 
 	beforeAll(async () => {
-		const mongod = new MongoMemoryServer();
-		const uri = await mongod.getUri();
+		const mongod = await MongoMemoryServer.create();
+		const uri = mongod.getUri();
 		const connector = new Connector(uri);
 		const db = await connector.connect();
 		endpoint = new Message(db);

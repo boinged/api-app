@@ -12,9 +12,10 @@ export class Message implements IEndpoint {
 		this.db = db;
 	}
 
-	async execute(request: FastifyRequest): Promise<MessageResult> {
+	async execute(_request: FastifyRequest): Promise<MessageResult> {
 		const collection = this.db.collection('message');
 		const message = await collection.findOne({});
-		return new MessageResult(message.message);
+
+		return new MessageResult(message?.message);
 	}
 }

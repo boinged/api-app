@@ -1,5 +1,5 @@
+import {fastifyHelmet} from '@fastify/helmet';
 import fastify from 'fastify';
-import helmet from 'fastify-helmet';
 
 import {Config} from './config/config';
 import {Connector} from './database/connector';
@@ -18,7 +18,7 @@ const start = async (): Promise<void> => {
 	await grpcServer.start();
 
 	const webServer = fastify({logger: Logger});
-	webServer.register(helmet);
+	webServer.register(fastifyHelmet);
 
 	const router = new Router(db);
 	webServer.register(router.applyRoutes.bind(router));

@@ -14,7 +14,9 @@ export class ContentServer implements IContentServer {
 		const message = await collection.findOne({});
 
 		const response = new ContentResponse();
-		response.setContent(message.message);
+		if (message) {
+			response.setContent(message.message);
+		}
 		callback(null, response);
 	}
 }

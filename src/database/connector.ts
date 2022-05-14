@@ -6,7 +6,8 @@ export class Connector {
 	client: MongoClient;
 
 	constructor(uri: string) {
-		this.client = new MongoClient(uri, {useUnifiedTopology: true});
+		this.client = new MongoClient(uri, {
+		});
 	}
 
 	async connect(): Promise<Db> {
