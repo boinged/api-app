@@ -18,4 +18,4 @@ steps:
   entrypoint: gcloud
   args: ['run', 'deploy', '$_SERVICE_NAME', '--image', 'eu.gcr.io/$PROJECT_ID/api:$SHORT_SHA']
 images:
-- eu.gcr.io/$PROJECT_ID/IMAGE:$SHORT_SHA
+- eu.gcr.io/$PROJECT_ID/api:$SHORT_SHA
