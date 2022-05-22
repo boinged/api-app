@@ -16,6 +16,6 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   id: Deploy
   entrypoint: gcloud
-  args: ['run', 'deploy', '$_SERVICE_NAME', '--image', 'eu.gcr.io/$PROJECT_ID/api:$SHORT_SHA']
+  args: ['run', 'deploy', '$_SERVICE_NAME', '--image', 'eu.gcr.io/$PROJECT_ID/api:$SHORT_SHA', '--region', '$LOCATION']
 images:
 - eu.gcr.io/$PROJECT_ID/api:$SHORT_SHA
