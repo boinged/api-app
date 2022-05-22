@@ -1,9 +1,9 @@
 steps:
-- name: node:14
+- name: node:16
   id: Install
   entrypoint: npm
   args: ['ci']
-- name: node:14
+- name: node:16
   id: Test
   entrypoint: npm
   args: ['test']
@@ -13,3 +13,9 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   id: Push
   args: ['push', 'eu.gcr.io/$PROJECT_ID/api:$SHORT_SHA']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  id: Deploy
+  entrypoint: gcloud
+  args: ['run', 'deploy', '$SERVICE_NAME', '--image', 'eu.gcr.io/$PROJECT_ID/api:$SHORT_SHA']
+images:
+- eu.gcr.io/$PROJECT_ID/IMAGE:$SHORT_SHA

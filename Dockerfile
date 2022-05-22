@@ -17,8 +17,8 @@ FROM node:16.15-alpine
 RUN apk add --no-cache tini
 WORKDIR /usr/src/app
 
-COPY --from=builder /usr/src/build/node_modules node_modules
-COPY --from=builder /usr/src/build/dist dist
+COPY --from=builder /usr/src/app/node_modules node_modules
+COPY --from=builder /usr/src/app/dist dist
 
 EXPOSE 8080
 ENTRYPOINT ["/sbin/tini", "--"]
