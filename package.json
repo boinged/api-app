@@ -1,28 +1,28 @@
 {
   "dependencies": {
-    "@fastify/helmet": "8.0.1",
+    "@fastify/helmet": "8.1.0",
     "@grpc/grpc-js": "1.6.7",
     "api-proto": "git+https://github.com/boinged/api-proto.git#v1.0.2",
     "fastify": "3.29.0",
     "google-protobuf": "3.20.1",
     "mongodb": "4.6.0",
-    "pino": "7.11.0",
+    "pino": "8.0.0",
     "source-map-support": "0.5.21"
   },
   "description": "api server",
   "devDependencies": {
     "@types/google-protobuf": "^3.15.6",
     "@types/jasmine": "^4.0.3",
-    "@types/node": "^17.0.35",
-    "@typescript-eslint/eslint-plugin": "^5.25.0",
-    "@typescript-eslint/parser": "^5.25.0",
-    "eslint": "^8.16.0",
+    "@types/node": "^17.0.39",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "eslint": "^8.17.0",
     "eslint-plugin-import": "^2.26.0",
     "jasmine": "^4.1.0",
-    "mongodb-memory-server": "^8.5.2",
+    "mongodb-memory-server": "^8.6.0",
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.3"
   },
   "license": "ISC",
   "repository": {

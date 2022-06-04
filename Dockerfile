@@ -18,5 +18,6 @@ WORKDIR /usr/src/app
 COPY --from=builder /usr/src/build/node_modules node_modules
 COPY --from=builder /usr/src/build/dist dist
 
+USER node
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["node", "-r", "source-map-support/register", "dist/index.js"]
