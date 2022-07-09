@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@fastify/helmet": "9.1.0",
+    "@fastify/websocket": "6.0.1",
     "@grpc/grpc-js": "1.6.7",
     "api-proto": "git+https://github.com/boinged/api-proto.git#v1.0.2",
     "fastify": "4.2.0",
@@ -13,6 +14,7 @@
   "devDependencies": {
     "@types/google-protobuf": "^3.15.6",
     "@types/jasmine": "^4.0.3",
+    "@types/ws": "^8.5.3",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
     "eslint": "^8.19.0",

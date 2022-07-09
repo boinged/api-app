@@ -1,4 +1,5 @@
 import helmet from '@fastify/helmet';
+import websocket from '@fastify/websocket';
 import fastify from 'fastify';
 
 import {Config} from './config/config';
@@ -19,9 +20,16 @@ const start = async (): Promise<void> => {
 
 	const webServer = fastify({logger: Logger});
 	webServer.register(helmet);
+	webServer.register(websocket);
 
 	const router = new Router(db);
 	webServer.register(router.applyRoutes.bind(router));
+
+	webServer.get('/connect', {websocket: true}, (connection, request) => {
+		connection.socket.on('open', () => {
+			Logger.info(`Connection from ${request.socket.remoteAddress}`);
+		});
+	});
 
 	await webServer.listen({
 		host: '::',
