@@ -3,6 +3,7 @@ import {Db} from 'mongodb';
 
 import {Health} from '../endpoint/health';
 import {Message} from '../endpoint/message';
+import {IBody} from '../model/iBody';
 
 export class Router {
 	db: Db;
@@ -13,9 +14,9 @@ export class Router {
 
 	async applyRoutes(server: FastifyInstance): Promise<void> {
 		const message = new Message(this.db);
-		server.get('/content', message.execute.bind(message));
+		server.get('/content', (request) => message.execute(request.body as IBody));
 
 		const health = new Health();
-		server.get('*', health.execute.bind(health));
+		server.get('*', (request) => health.execute(request.body as IBody));
 	}
 }

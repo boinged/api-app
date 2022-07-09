@@ -1,4 +1,4 @@
-import {fastifyHelmet} from '@fastify/helmet';
+import helmet from '@fastify/helmet';
 import fastify from 'fastify';
 
 import {Config} from './config/config';
@@ -18,12 +18,15 @@ const start = async (): Promise<void> => {
 	await grpcServer.start();
 
 	const webServer = fastify({logger: Logger});
-	webServer.register(fastifyHelmet);
+	webServer.register(helmet);
 
 	const router = new Router(db);
 	webServer.register(router.applyRoutes.bind(router));
 
-	await webServer.listen(Config.port, '::');
+	await webServer.listen({
+		host: '::',
+		port: Config.port
+	});
 };
 
 start();
