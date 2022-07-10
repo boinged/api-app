@@ -19,12 +19,18 @@ const start = async (): Promise<void> => {
 	await grpcServer.start();
 
 	const webServer = fastify({logger: Logger});
-	webServer.register(helmet);
-	webServer.register(websocket);
+	await webServer.register(helmet);
+	await webServer.register(websocket);
 
 	webServer.get('/connect', {websocket: true}, (connection, request) => {
-		connection.socket.on('open', () => {
-			Logger.info(`Connection from ${request.socket.remoteAddress}`);
+		Logger.info(`Connection open ${request.socket.remoteAddress}`);
+
+		connection.socket.on('message', (message) => {
+			Logger.info(`Message ${message.toString()} from ${request.socket.remoteAddress}`);
+		});
+
+		connection.socket.on('close', () => {
+			Logger.info(`Connection close ${request.socket.remoteAddress}`);
 		});
 	});
 
