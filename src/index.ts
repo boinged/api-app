@@ -1,12 +1,7 @@
-import helmet from '@fastify/helmet';
-import websocket from '@fastify/websocket';
-import fastify from 'fastify';
-
 import {Config} from './config/config';
 import {Connector} from './database/connector';
-import {Router} from './router/router';
 import {GrpcServer} from './server/grpcServer';
-import {Logger} from './util/logger';
+import {WebServer} from './server/webServer';
 
 const start = async (): Promise<void> => {
 	if (!Config.databaseUri) {
@@ -18,29 +13,8 @@ const start = async (): Promise<void> => {
 	const grpcServer = new GrpcServer(db);
 	await grpcServer.start();
 
-	const webServer = fastify({logger: Logger});
-	await webServer.register(helmet);
-	await webServer.register(websocket);
-
-	webServer.get('/connect', {websocket: true}, (connection, request) => {
-		Logger.info(`Connection open ${request.socket.remoteAddress}`);
-
-		connection.socket.on('message', (message) => {
-			Logger.info(`Message ${message.toString()} from ${request.socket.remoteAddress}`);
-		});
-
-		connection.socket.on('close', () => {
-			Logger.info(`Connection close ${request.socket.remoteAddress}`);
-		});
-	});
-
-	const router = new Router(db);
-	webServer.register(router.applyRoutes.bind(router));
-
-	await webServer.listen({
-		host: '::',
-		port: Config.port
-	});
+	const webServer = new WebServer(db);
+	await webServer.start(Config.port);
 };
 
 start();

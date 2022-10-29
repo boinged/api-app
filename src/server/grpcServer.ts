@@ -22,7 +22,7 @@ export class GrpcServer {
 					return reject(error);
 				}
 				this.server.start();
-				Logger.info(`grpc server started on port ${port}`);
+				Logger.info(this.constructor.name, {info: `grpc server started on port ${port}`});
 				resolve();
 			});
 		});

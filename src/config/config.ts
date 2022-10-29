@@ -1,5 +1,5 @@
 export class Config {
-	static port = Number(process.env.PORT) || 8080;
+	static readonly databaseUri = process.env.DATABASE_URI;
 
-	static databaseUri = process.env.DATABASE_URI;
+	static readonly port = Number(process.env.PORT) || 8080;
 }
