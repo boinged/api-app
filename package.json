@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@fastify/helmet": "10.0.2",
-    "@fastify/websocket": "7.1.0",
+    "@fastify/websocket": "7.1.1",
     "@grpc/grpc-js": "1.7.3",
     "api-proto": "git+https://github.com/boinged/api-proto.git#v1.0.2",
     "fastify": "4.9.2",
@@ -12,14 +12,12 @@
   "description": "api server",
   "devDependencies": {
     "@types/google-protobuf": "^3.15.6",
-    "@types/jasmine": "^4.3.0",
     "@types/ws": "^8.5.3",
-    "@typescript-eslint/eslint-plugin": "^5.41.0",
-    "@typescript-eslint/parser": "^5.41.0",
-    "eslint": "^8.26.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.27.0",
     "eslint-plugin-import": "^2.26.0",
-    "jasmine": "^4.4.0",
-    "mongodb-memory-server": "^8.9.4",
+    "mongodb-memory-server": "^8.9.5",
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.8.4"
@@ -32,9 +30,9 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "cover": "nyc jasmine --config=jasmine.json",
-    "lint": "eslint --fix --ext .ts src spec",
+    "lint": "eslint --fix --ext .ts src test",
     "start": "node -r source-map-support/register dist/src/index.js",
-    "test": "npm run build && jasmine --config=jasmine.json"
+    "test": "npm run build && node --test dist/test/**/*.js"
   },
   "version": "1.0.0"
 }
