@@ -1,9 +1,9 @@
 steps:
-- name: node:16
+- name: node:18
   id: Install
   entrypoint: npm
   args: ['ci']
-- name: node:16
+- name: node:18
   id: Test
   entrypoint: npm
   args: ['test']
