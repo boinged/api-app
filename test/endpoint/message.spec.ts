@@ -2,7 +2,7 @@ import * as assert from 'node:assert/strict';
 import {before, beforeEach, describe, it} from 'node:test';
 
 import {FastifyRequest} from 'fastify';
-import {MongoMemoryServer} from 'mongodb-memory-server-core';
+import {MongoMemoryServer} from 'mongodb-memory-server';
 
 import {Connector} from '../../src/database/connector';
 import {Message} from '../../src/endpoint/message';
