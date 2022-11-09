@@ -9,7 +9,7 @@ RUN npm ci
 COPY src src
 RUN npm run build
 
-RUN npm ci --production
+RUN npm ci --omit=dev
 
 FROM node:18.12-alpine
 RUN apk add --no-cache tini
