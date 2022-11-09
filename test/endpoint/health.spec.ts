@@ -1,5 +1,5 @@
 import * as assert from 'node:assert/strict';
-import {beforeEach, describe, it} from 'node:test';
+import {before, beforeEach, describe, it} from 'node:test';
 
 import {FastifyRequest} from 'fastify';
 
@@ -11,10 +11,12 @@ describe('health', () => {
 	let request: FastifyRequest;
 
 	describe('execute', () => {
-		beforeEach(async () => {
+		before(() => {
 			endpoint = new Health();
+		});
+
+		beforeEach(() => {
 			request = {} as FastifyRequest;
-			await endpoint.execute(request);
 		});
 
 		it('replies with a health result', async () => {

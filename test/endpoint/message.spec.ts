@@ -1,5 +1,5 @@
 import * as assert from 'node:assert/strict';
-import {before, beforeEach, describe, it} from 'node:test';
+import {after, before, beforeEach, describe, it} from 'node:test';
 
 import {FastifyRequest} from 'fastify';
 import {MongoMemoryServer} from 'mongodb-memory-server';
@@ -9,18 +9,25 @@ import {Message} from '../../src/endpoint/message';
 import {MessageResult} from '../../src/model/messageResult';
 
 describe('message', () => {
+	let connector: Connector;
 	let endpoint: Message;
+	let mongod: MongoMemoryServer;
 	let request: FastifyRequest;
 
 	describe('execute', () => {
+		after(async () => {
+			await connector.close();
+			await mongod.stop();
+		});
+
 		before(async () => {
-			const mongod = await MongoMemoryServer.create();
+			mongod = await MongoMemoryServer.create();
 			const uri = mongod.getUri();
-			const connector = new Connector(uri);
+			connector = new Connector(uri);
 			const db = await connector.connect();
 			endpoint = new Message(db);
 			await db.collection('message').insertOne({message: 'hello'});
-		}, {timeout: 10000});
+		});
 	
 		beforeEach(() => {
 			request = {} as FastifyRequest;

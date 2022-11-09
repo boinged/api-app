@@ -16,4 +16,8 @@ export class Connector {
 		Logger.info(this.constructor.name, {info: `Connected to db ${db.databaseName}`});
 		return db;
 	}
+
+	async close(): Promise<void> {
+		await this.client.close();
+	}
 }
