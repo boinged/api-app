@@ -20,4 +20,4 @@ COPY --from=builder /usr/src/build/dist dist
 
 USER node
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["node", "-r", "source-map-support/register", "dist/index.js"]
+CMD ["node", "--enable-source-maps", "dist/index.js"]
