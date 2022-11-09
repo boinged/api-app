@@ -32,7 +32,7 @@
     "cover": "nyc jasmine --config=jasmine.json",
     "lint": "eslint --fix --ext .ts src test",
     "start": "node -r source-map-support/register dist/src/index.js",
-    "test": "npm run build && node --test dist/test/**/*.js"
+    "test": "npm run build && node --test"
   },
   "version": "1.0.0"
 }
