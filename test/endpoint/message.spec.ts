@@ -2,29 +2,22 @@ import * as assert from 'node:assert/strict';
 import {after, before, beforeEach, describe, it} from 'node:test';
 
 import {FastifyRequest} from 'fastify';
-import {MongoMemoryServer} from 'mongodb-memory-server';
 
-import {Connector} from '../../src/database/connector';
 import {Message} from '../../src/endpoint/message';
 import {MessageResult} from '../../src/model/messageResult';
+import {Helper} from '../helper';
 
 describe('message', () => {
-	let connector: Connector;
 	let endpoint: Message;
-	let mongod: MongoMemoryServer;
 	let request: FastifyRequest;
 
 	describe('execute', () => {
 		after(async () => {
-			await connector.close();
-			await mongod.stop();
+			await Helper.closeDb();
 		});
 
 		before(async () => {
-			mongod = await MongoMemoryServer.create();
-			const uri = mongod.getUri();
-			connector = new Connector(uri);
-			const db = await connector.connect();
+			const db = await Helper.openDb();
 			endpoint = new Message(db);
 			await db.collection('message').insertOne({message: 'hello'});
 		});
