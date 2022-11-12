@@ -11,6 +11,7 @@
   "description": "api server",
   "devDependencies": {
     "@types/google-protobuf": "^3.15.6",
+    "@types/node": "^18.11.9",
     "@types/ws": "^8.5.3",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
@@ -31,7 +32,7 @@
     "cover": "nyc jasmine --config=jasmine.json",
     "lint": "eslint --fix --ext .ts src test",
     "start": "node --enable-source-maps dist/src/index.js",
-    "test": "npm run build && node --test --enable-source-maps"
+    "test": "npm run build && node --enable-source-maps --test"
   },
   "version": "1.0.0"
 }
