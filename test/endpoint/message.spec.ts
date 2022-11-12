@@ -1,15 +1,14 @@
 import * as assert from 'node:assert/strict';
 import {after, before, beforeEach, describe, it} from 'node:test';
 
-import {FastifyRequest} from 'fastify';
-
 import {Message} from '../../src/endpoint/message';
+import {IBody} from '../../src/model/iBody';
 import {MessageResult} from '../../src/model/messageResult';
 import {Helper} from '../helper';
 
 describe('message', () => {
 	let endpoint: Message;
-	let request: FastifyRequest;
+	let body: IBody;
 
 	describe('execute', () => {
 		after(async () => {
@@ -23,11 +22,11 @@ describe('message', () => {
 		});
 	
 		beforeEach(() => {
-			request = {} as FastifyRequest;
+			body = {};
 		});
 
 		it('replies with a message result', async () => {
-			const result = await endpoint.execute(request);
+			const result = await endpoint.execute(body);
 			assert(result instanceof MessageResult);
 			assert(result.message);
 		});

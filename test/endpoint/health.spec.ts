@@ -1,14 +1,13 @@
 import * as assert from 'node:assert/strict';
 import {before, beforeEach, describe, it} from 'node:test';
 
-import {FastifyRequest} from 'fastify';
-
 import {Health} from '../../src/endpoint/health';
 import {HealthResult} from '../../src/model/healthResult';
+import {IBody} from '../../src/model/iBody';
 
 describe('health', () => {
 	let endpoint: Health;
-	let request: FastifyRequest;
+	let body: IBody;
 
 	describe('execute', () => {
 		before(() => {
@@ -16,11 +15,11 @@ describe('health', () => {
 		});
 
 		beforeEach(() => {
-			request = {} as FastifyRequest;
+			body = {};
 		});
 
 		it('replies with a health result', async () => {
-			const result = await endpoint.execute(request);
+			const result = await endpoint.execute(body);
 			assert(result instanceof HealthResult);
 			assert.equal(result.health, 'OK');
 		});
