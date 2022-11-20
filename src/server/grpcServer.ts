@@ -4,9 +4,10 @@ import {Db} from 'mongodb';
 
 import {Logger} from '../util/logger';
 
+import {IApiServer} from './apiServer';
 import {ContentServer} from './contentServer';
 
-export class GrpcServer {
+export class GrpcServer implements IApiServer {
 	server: Server;
 
 	constructor(db: Db) {
@@ -15,14 +16,26 @@ export class GrpcServer {
 		this.server.addService(ContentService, contentServer as unknown as UntypedServiceImplementation);
 	}
 
-	async start(): Promise<void> {
+	async start(port: number): Promise<void> {
 		return new Promise((resolve, reject) => {
-			this.server.bindAsync('[::]:50051', ServerCredentials.createInsecure(), (error, port) => {
+			this.server.bindAsync(`[::]:${port}`, ServerCredentials.createInsecure(), (error) => {
 				if (error) {
 					return reject(error);
 				}
 				this.server.start();
 				Logger.info(this.constructor.name, {info: `grpc server started on port ${port}`});
+				resolve();
+			});
+		});
+	}
+
+	async stop(): Promise<void> {
+		Logger.info(this.constructor.name, {info: 'grpc server stopping'});
+		return new Promise((resolve, reject) => {
+			this.server.tryShutdown((error) => {
+				if (error) {
+					return reject(error);
+				}
 				resolve();
 			});
 		});

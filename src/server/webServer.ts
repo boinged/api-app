@@ -8,11 +8,16 @@ import {Message} from '../endpoint/message';
 import {IBody} from '../model/body';
 import {Logger} from '../util/logger';
 
-export class WebServer {
+import {IApiServer} from './apiServer';
+
+export class WebServer implements IApiServer {
 	db: Db;
+
+	server: FastifyInstance;
 
 	constructor(db: Db) {
 		this.db = db;
+		this.server = fastify();
 	}
 
 	async applyRoutes(server: FastifyInstance): Promise<void> {
@@ -24,11 +29,10 @@ export class WebServer {
 	}
 
 	async start(port: number): Promise<void> {
-		const webServer = fastify();
-		await webServer.register(helmet);
-		await webServer.register(websocket);
+		await this.server.register(helmet);
+		await this.server.register(websocket);
 	
-		webServer.get('/connect', {websocket: true}, (connection, request) => {
+		this.server.get('/connect', {websocket: true}, (connection, request) => {
 			Logger.info('index', {info: `Connection open ${request.socket.remoteAddress}`});
 	
 			connection.socket.on('message', (message) => {
@@ -40,12 +44,17 @@ export class WebServer {
 			});
 		});
 	
-		webServer.register(this.applyRoutes.bind(this));
+		this.applyRoutes(this.server);
 	
-		await webServer.listen({
+		await this.server.listen({
 			host: '::',
 			port
 		});
 		Logger.info(this.constructor.name, {info: `web server started on port ${port}`});
+	}
+
+	async stop(): Promise<void> {
+		Logger.info(this.constructor.name, {info: 'web server stopping'});
+		await this.server.close();
 	}
 }
