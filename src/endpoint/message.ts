@@ -1,9 +1,10 @@
 import {Db} from 'mongodb';
 
-import {IBody} from '../model/iBody';
+import {IBody} from '../model/body';
 import {MessageResult} from '../model/messageResult';
+import {IMessageSchema} from '../model/messageSchema';
 
-import {IEndpoint} from './iEndpoint';
+import {IEndpoint} from './endpoint';
 
 export class Message implements IEndpoint {
 	db: Db;
@@ -13,9 +14,9 @@ export class Message implements IEndpoint {
 	}
 
 	async execute(body: IBody): Promise<MessageResult> {
-		const collection = this.db.collection('message');
+		const collection = this.db.collection<IMessageSchema>('message');
 		const message = await collection.findOne({});
 
-		return new MessageResult(message?.message);
+		return new MessageResult(message?.message ?? 'Message missing');
 	}
 }

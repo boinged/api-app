@@ -1,4 +1,4 @@
-import {IBody} from '../model/iBody';
+import {IBody} from '../model/body';
 import {Result} from '../model/result';
 
 export interface IEndpoint {

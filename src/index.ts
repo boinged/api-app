@@ -21,7 +21,9 @@ const start = async (): Promise<void> => {
 	const webServer = new WebServer(db);
 	await webServer.start(Config.port);
 
-	process.once('SIGTERM', stop);
+	process.once('SIGTERM', () => {
+		stop;
+	});
 };
 
 const stop = async(): Promise<void> => {

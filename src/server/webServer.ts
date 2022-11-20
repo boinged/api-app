@@ -1,11 +1,11 @@
 import helmet from '@fastify/helmet';
 import websocket from '@fastify/websocket';
-import fastify, {FastifyInstance} from 'fastify';
+import {fastify, FastifyInstance} from 'fastify';
 import {Db} from 'mongodb';
 
 import {Health} from '../endpoint/health';
 import {Message} from '../endpoint/message';
-import {IBody} from '../model/iBody';
+import {IBody} from '../model/body';
 import {Logger} from '../util/logger';
 
 export class WebServer {

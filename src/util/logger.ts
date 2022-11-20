@@ -1,5 +1,6 @@
 export class Logger {
 	static info(source: string, message: Record<string, unknown>): void {
-		console.info({source, ...message});
+		const log = JSON.stringify({source, ...message});
+		console.info(log);
 	}
 }
