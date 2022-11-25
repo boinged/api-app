@@ -1,24 +1,24 @@
 {
   "dependencies": {
-    "@fastify/helmet": "10.0.2",
+    "@fastify/helmet": "10.1.0",
     "@fastify/websocket": "7.1.1",
     "@grpc/grpc-js": "1.7.3",
     "api-proto": "git+https://github.com/boinged/api-proto.git#v1.0.2",
-    "fastify": "4.10.0",
+    "fastify": "4.10.2",
     "google-protobuf": "3.21.2",
-    "mongodb": "4.12.0"
+    "mongodb": "4.12.1"
   },
   "description": "api server",
   "devDependencies": {
     "@types/google-protobuf": "^3.15.6",
     "@types/node": "^18.11.9",
     "@types/ws": "^8.5.3",
-    "@typescript-eslint/eslint-plugin": "^5.43.0",
-    "@typescript-eslint/parser": "^5.43.0",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
     "eslint": "^8.28.0",
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.26.0",
-    "mongodb-memory-server": "^8.10.0",
+    "mongodb-memory-server": "^8.10.1",
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.9.3"
