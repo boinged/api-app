@@ -1,21 +1,20 @@
 import {Db} from 'mongodb';
 
 import {IBody} from '../model/body';
+import {MessageModel} from '../model/messageModel';
 import {MessageResult} from '../model/messageResult';
-import {IMessageSchema} from '../model/messageSchema';
 
 import {IEndpoint} from './endpoint';
 
-export class Message implements IEndpoint {
-	db: Db;
+export class MessageEndpoint implements IEndpoint {
+	model: MessageModel;
 
 	constructor(db: Db) {
-		this.db = db;
+		this.model = new MessageModel(db);
 	}
 
 	async execute(body: IBody): Promise<MessageResult> {
-		const collection = this.db.collection<IMessageSchema>('message');
-		const message = await collection.findOne({});
+		const message = await this.model.findOne({});
 
 		return new MessageResult(message?.message ?? 'Message missing');
 	}

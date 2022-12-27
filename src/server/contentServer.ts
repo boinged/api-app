@@ -2,7 +2,7 @@ import {ServerUnaryCall, sendUnaryData} from '@grpc/grpc-js';
 import {ContentResponse, ContentRequest, IContentServer} from 'api-proto';
 import {Db} from 'mongodb';
 
-import {IMessageSchema} from '../model/messageSchema';
+import {IMessageSchema} from '../model/messageModel';
 
 export class ContentServer implements IContentServer {
 	db: Db;

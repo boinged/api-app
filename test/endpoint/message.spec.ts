@@ -1,13 +1,13 @@
 import * as assert from 'node:assert/strict';
 import {after, before, beforeEach, describe, it} from 'node:test';
 
-import {Message} from '../../src/endpoint/message';
+import {MessageEndpoint} from '../../src/endpoint/messageEndpoint';
 import {IBody} from '../../src/model/body';
 import {MessageResult} from '../../src/model/messageResult';
 import {Helper} from '../helper';
 
 describe('message', () => {
-	let endpoint: Message;
+	let endpoint: MessageEndpoint;
 	let body: IBody;
 
 	describe('execute', () => {
@@ -17,7 +17,7 @@ describe('message', () => {
 
 		before(async () => {
 			const db = await Helper.openDb();
-			endpoint = new Message(db);
+			endpoint = new MessageEndpoint(db);
 			await db.collection('message').insertOne({message: 'hello'});
 		});
 	

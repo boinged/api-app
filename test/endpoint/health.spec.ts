@@ -1,17 +1,17 @@
 import * as assert from 'node:assert/strict';
 import {before, beforeEach, describe, it} from 'node:test';
 
-import {Health} from '../../src/endpoint/health';
+import {HealthEndpoint} from '../../src/endpoint/healthEndpoint';
 import {IBody} from '../../src/model/body';
 import {HealthResult} from '../../src/model/healthResult';
 
 describe('health', () => {
-	let endpoint: Health;
+	let endpoint: HealthEndpoint;
 	let body: IBody;
 
 	describe('execute', () => {
 		before(() => {
-			endpoint = new Health();
+			endpoint = new HealthEndpoint();
 		});
 
 		beforeEach(() => {

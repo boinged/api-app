@@ -4,7 +4,7 @@ import {HealthResult} from '../model/healthResult';
 
 import {IEndpoint} from './endpoint';
 
-export class Health implements IEndpoint {
+export class HealthEndpoint implements IEndpoint {
 	async execute(body: IBody): Promise<HealthResult> {
 		return new HealthResult();
 	}

@@ -3,8 +3,8 @@ import websocket from '@fastify/websocket';
 import {fastify, FastifyInstance} from 'fastify';
 import {Db} from 'mongodb';
 
-import {Health} from '../endpoint/health';
-import {Message} from '../endpoint/message';
+import {HealthEndpoint} from '../endpoint/healthEndpoint';
+import {MessageEndpoint} from '../endpoint/messageEndpoint';
 import {IBody} from '../model/body';
 import {Logger} from '../util/logger';
 
@@ -21,10 +21,10 @@ export class WebServer implements IApiServer {
 	}
 
 	async applyRoutes(server: FastifyInstance): Promise<void> {
-		const message = new Message(this.db);
+		const message = new MessageEndpoint(this.db);
 		server.get('/content', (request) => message.execute(request.body as IBody));
 
-		const health = new Health();
+		const health = new HealthEndpoint();
 		server.get('*', (request) => health.execute(request.body as IBody));
 	}
 
