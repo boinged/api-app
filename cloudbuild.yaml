@@ -1,9 +1,9 @@
 steps:
-- name: node:18
+- name: node:18-bullseye
   entrypoint: npm
   args: ['ci']
   id: Install
-- name: node:18
+- name: node:18-bullseye
   entrypoint: npm
   args: ['test']
   id: Test
