@@ -8,14 +8,12 @@ steps:
   args: ['test']
   id: Test
 - name: docker:20
-  args: ['build', '--no-cache', '-t', 'eu.gcr.io/$PROJECT_ID/api:$SHORT_SHA', '.']
+  args: ['build', '--no-cache', '-t', 'europe-north1-docker.pkg.dev/$PROJECT_ID/images/api:$SHORT_SHA', '.']
   id: Build
 - name: docker:20
-  args: ['push', 'eu.gcr.io/$PROJECT_ID/api:$SHORT_SHA']
+  args: ['push', 'europe-north1-docker.pkg.dev/$PROJECT_ID/images/api:$SHORT_SHA']
   id: Push
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
   entrypoint: gcloud
-  args: ['run', 'deploy', '$_SERVICE_NAME', '--image', 'eu.gcr.io/$PROJECT_ID/api:$SHORT_SHA', '--region', '$LOCATION']
+  args: ['run', 'deploy', '$_SERVICE_NAME', '--image', 'europe-north1-docker.pkg.dev/$PROJECT_ID/images/api:$SHORT_SHA', '--region', '$LOCATION']
   id: Deploy
-images:
-- eu.gcr.io/$PROJECT_ID/api:$SHORT_SHA
