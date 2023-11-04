@@ -1,4 +1,4 @@
-import * as assert from 'node:assert/strict';
+import {strict as assert} from 'node:assert';
 import {after, before, beforeEach, describe, it} from 'node:test';
 
 import {MessageEndpoint} from '../../src/endpoint/messageEndpoint';

@@ -17,6 +17,7 @@
 		"@typescript-eslint/interface-name-prefix": "off",
 		"@typescript-eslint/no-empty-interface": "off",
 		"@typescript-eslint/no-explicit-any": "error",
+		"@typescript-eslint/no-unused-vars": "warn",
 		"comma-spacing": "error",
 		"eol-last": "error",
 		"import/no-useless-path-segments": "error",
